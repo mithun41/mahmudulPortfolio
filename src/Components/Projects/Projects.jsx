@@ -9,8 +9,9 @@ import {
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-import projects1 from "../../assets/freelance-marketplace.jpg";
+import projects1 from "../../assets/tech-trove.png";
 import projects2 from "../../assets/volonteer-management.jpg";
+import projects3 from "../../assets/freelance-marketplace.jpg";
 
 const techColors = {
   javascript: "bg-yellow-400 text-gray-900",
@@ -135,9 +136,9 @@ const Projects = () => {
   const projectsData = [
     {
       img: projects1,
-      alt: "Freelance Task Marketplace",
-      title: "Freelance Task Marketplace",
-      desc: "A platform where users can post and take freelance tasks in real-time. Includes user auth, dashboard, and bidding system.",
+      alt: "Tech Trove",
+      title: "Tech Trove",
+      desc: "Tech Trove is a full-stack web application built with React, Node.js, MongoDB, and Firebase that functions as a tech product marketplace. It allows users to browse, review, and vote on tech products, featuring user authentication, real-time data updates, and an intuitive UI styled with Tailwind CSS. The project demonstrates skills in modern web development, API integration, and responsive design.",
       tech: [
         {
           icon: SiJavascript,
@@ -149,8 +150,8 @@ const Projects = () => {
         { icon: SiTailwindcss, name: "Tailwind", color: techColors.tailwind },
         { icon: SiMongodb, name: "MongoDB", color: techColors.mongodb },
       ],
-      live: "http://chemical-board.surge.sh/",
-      repo: "https://github.com/mithun41/freelance-task-marketplace-client",
+      live: "https://tech-trove.surge.sh/",
+      repo: "#",
       reverse: false,
     },
     {
@@ -174,10 +175,10 @@ const Projects = () => {
       reverse: true,
     },
     {
-      img: projects2,
-      alt: "Portfolio Website",
-      title: "Personal Portfolio Website",
-      desc: "My personal portfolio showcasing skills, projects, and contact info. Built with React, Tailwind, and React Router.",
+      img: projects3,
+      alt: "Freelance Task Marketplace",
+      title: "Freelance Task Marketplace",
+      desc: "A platform where users can post and take freelance tasks in real-time. Includes user auth, dashboard, and bidding system.",
       tech: [
         {
           icon: SiJavascript,
@@ -189,8 +190,8 @@ const Projects = () => {
         { icon: SiTailwindcss, name: "Tailwind", color: techColors.tailwind },
         { icon: SiMongodb, name: "MongoDB", color: techColors.mongodb },
       ],
-      live: "http://disagreeable-kitten.surge.sh/",
-      repo: "https://github.com/mithun41/volunteer-management-client",
+      live: "http://chemical-board.surge.sh/",
+      repo: "https://github.com/mithun41/freelance-task-marketplace-client",
       reverse: false,
     },
   ];
