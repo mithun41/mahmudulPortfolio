@@ -10,7 +10,8 @@ import {
   FaPhoneAlt,
   FaWhatsapp as FaWhatsappIcon,
 } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const contacts = [
   {
@@ -19,7 +20,8 @@ const contacts = [
     title: "Email",
     description: "mahmudulhasan3527@gmail.com",
     buttonText: "Email Me",
-    buttonLink: "mahmudulhasan3527@gmail.com",
+    buttonLink:
+      "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=new",
     buttonIcon: <FaPaperPlane size={16} />,
   },
   {
@@ -69,25 +71,44 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
 };
 
 const ContactMethods = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: false, // so animation triggers every time in view
+    threshold: 0.2,
+  });
+
+  React.useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [controls, inView]);
+
   return (
     <section
       id="contact"
-      style={{ backgroundColor: "#CAE8BD" }}
-      className="py-16 px-6 md:px-20"
+      className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen py-20 px-6 md:px-20"
     >
-      <h2 className="text-3xl font-semibold text-center mb-12 text-gray-800">
+      <h2 className="text-5xl font-extrabold text-center mb-16 text-cyan-400 tracking-wide">
         Contact Methods
       </h2>
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto"
+        ref={ref}
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-7xl mx-auto"
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        animate={controls}
       >
         {contacts.map(
           ({
@@ -101,22 +122,27 @@ const ContactMethods = () => {
           }) => (
             <motion.div
               key={id}
-              className="bg-[#ECFAE5] rounded-lg p-6 flex flex-col gap-4 shadow-lg border border-gray-300"
+              className="bg-gray-800 bg-opacity-60 border border-cyan-700 rounded-3xl p-6 flex flex-col gap-5 shadow-xl"
               variants={cardVariants}
+              whileHover={{
+                scale: 1.03,
+                boxShadow: "0 8px 15px rgba(6,182,212,0.5)",
+              }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-lg bg-gradient-to-tr from-green-400 to-green-600 text-white">
+              <div className="flex items-center gap-5">
+                <div className="p-3 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 text-white">
                   {icon}
                 </div>
-                <h3 className="font-semibold text-lg text-gray-900">{title}</h3>
+                <h3 className="font-semibold text-xl text-gray-300">{title}</h3>
               </div>
-              <p className="text-gray-700 pl-14">{description}</p>
+              <p className="text-gray-300 pl-14">{description}</p>
               {buttonText && buttonLink && (
                 <a
                   href={buttonLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 btn btn-outline hover:bg-[#d4ecc7] transition "
+                  className="inline-flex items-center gap-2 px-6 py-2 rounded-xl border border-cyan-600 text-cyan-400 hover:bg-cyan-500 hover:text-white transition font-semibold justify-center"
                 >
                   {buttonText}
                   {buttonIcon && <span>{buttonIcon}</span>}

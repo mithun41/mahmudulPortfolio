@@ -2,14 +2,16 @@ import React from "react";
 import { Outlet } from "react-router";
 import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
+import BackgroundAnimation from "../Components/BgAnimation/BackgroundAnimation";
 
 const RootLayout = () => {
   return (
-    <>
-      <Navbar></Navbar>
-      <Outlet></Outlet>
+    <div>
+      <Navbar />
+
+      <Outlet />
       <Footer></Footer>
-    </>
+    </div>
   );
 };
 

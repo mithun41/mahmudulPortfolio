@@ -1,16 +1,25 @@
-import React from "react";
+import { motion } from "framer-motion";
 
 const AboutMe = () => {
   return (
-    <section id="about" className="bg-[#DDF6D2] px-6 md:px-20 py-20">
-      <h2 className="text-4xl font-bold text-center mb-10 text-gray-800">
+    <section
+      id="about"
+      className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen px-6 md:px-20 py-24 flex flex-col justify-center"
+    >
+      <h2 className="text-5xl font-extrabold text-center mb-16 text-cyan-400 tracking-wide">
         About Me
       </h2>
 
-      <div className=" mx-auto text-gray-700 text-lg leading-relaxed">
-        <p className="mb-6 bg-[#ECFAE5] p-4 rounded-2xl">
+      <motion.div
+        className="max-w-4xl mx-auto text-gray-300 text-lg leading-relaxed space-y-10"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <p className="bg-gray-800 bg-opacity-60 p-8 rounded-3xl shadow-xl border border-cyan-700">
           Hello! I’m{" "}
-          <span className="font-semibold text-blue-700">
+          <span className="font-semibold text-cyan-400">
             Mahmudul Hasan Mithun
           </span>
           , a passionate front-end developer from Bangladesh. My programming
@@ -21,7 +30,7 @@ const AboutMe = () => {
           React, Firebase, and MongoDB.
         </p>
 
-        <p className="mb-6 bg-[#ECFAE5] p-4 rounded-2xl">
+        <p className="bg-gray-800 bg-opacity-60 p-8 rounded-3xl shadow-xl border border-cyan-700">
           I enjoy working on real-world problems, designing modern UIs, and
           building smooth user experiences. Whether it’s crafting a
           pixel-perfect landing page or building a full-stack app, I love
@@ -30,7 +39,7 @@ const AboutMe = () => {
           technologies that help improve performance and user experience.
         </p>
 
-        <p className="mb-6 bg-[#ECFAE5] p-4 rounded-2xl">
+        <p className="bg-gray-800 bg-opacity-60 p-8 rounded-3xl shadow-xl border border-cyan-700">
           Outside of programming, I enjoy spending time in nature, watching tech
           documentaries, and exploring street photography. I also like
           experimenting with design ideas in Figma, even if it's just for fun. I
@@ -38,12 +47,12 @@ const AboutMe = () => {
           developer and as a person.
         </p>
 
-        <p className="bg-[#ECFAE5] p-4 rounded-2xl">
+        <p className="bg-gray-800 bg-opacity-60 p-8 rounded-3xl shadow-xl border border-cyan-700">
           I’m a strong believer in continuous learning, collaboration, and
           building meaningful things. If you’re looking for someone who codes
           with passion and is always ready to improve, then I’d love to connect!
         </p>
-      </div>
+      </motion.div>
     </section>
   );
 };

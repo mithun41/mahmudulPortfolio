@@ -1,71 +1,108 @@
-import { Link } from "react-router";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 import { FaArrowRight, FaGithub, FaLinkedin } from "react-icons/fa";
-import myImage from "../../assets/Mithun.jpg"; // Replace with your image
+import myImage from "../../assets/Mithun.jpg";
 
 const Banner = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.3 });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({ opacity: 1, x: 0 });
+    } else {
+      controls.start({ opacity: 0, x: -50 });
+    }
+  }, [controls, inView]);
+
   return (
     <section
       id="banner"
-      className="bg-[#CAE8BD] min-h-screen flex items-center justify-center px-6 md:px-20 py-10"
+      className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen flex items-center justify-center px-6 md:px-20 py-10 overflow-hidden"
     >
-      <div className="flex flex-col-reverse md:flex-row items-center gap-10 w-full max-w-6xl">
+      {/* Background blobs */}
+      <motion.div
+        aria-hidden="true"
+        className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-cyan-500 opacity-20 blur-3xl animate-blob"
+      />
+      <motion.div
+        aria-hidden="true"
+        className="absolute top-10 right-20 w-72 h-72 rounded-full bg-blue-700 opacity-20 blur-2xl animate-blob animation-delay-2000"
+      />
+      <motion.div
+        aria-hidden="true"
+        className="absolute bottom-20 left-10 w-64 h-64 rounded-full bg-purple-700 opacity-15 blur-3xl animate-blob animation-delay-4000"
+      />
+
+      <div className="relative flex flex-col-reverse md:flex-row items-center gap-12 w-full max-w-6xl">
         {/* Left Text */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
+          ref={ref}
+          animate={controls}
+          initial={{ opacity: 0, x: -50 }}
+          transition={{ duration: 0.7 }}
           className="flex-1 text-center md:text-left"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-snug mb-4">
-            Hey, I'm <span className="text-blue-700">Mahmudul Hasan</span>
+          <h1 className="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+            Hey, I'm{" "}
+            <span className="text-cyan-400 hover:text-cyan-500 transition-colors cursor-pointer">
+              Mahmudul Hasan
+            </span>
           </h1>
-          <p className="text-lg text-gray-700 mb-6 max-w-xl mx-auto md:mx-0">
+          <p className="text-gray-300 text-lg md:text-xl mb-8 max-w-xl mx-auto md:mx-0">
             A passionate{" "}
-            <span className="font-semibold text-blue-600">
+            <span className="font-semibold text-cyan-400">
               Front-End Developer
             </span>{" "}
             crafting responsive websites with{" "}
-            <span className="font-semibold">React</span>,{" "}
-            <span className="font-semibold">Firebase</span> &{" "}
-            <span className="font-semibold">Tailwind CSS</span>. Clean UI. Clean
-            Code.
+            <span className="font-semibold text-cyan-400">React</span>,{" "}
+            <span className="font-semibold text-cyan-400">Firebase</span> &{" "}
+            <span className="font-semibold text-cyan-400">Tailwind CSS</span>.
+            Clean UI. Clean Code.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <a
+          <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start">
+            <motion.a
               href="#projects"
-              className="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-xl hover:bg-blue-800 transition font-medium"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-3 bg-cyan-500 hover:bg-cyan-600 text-gray-900 font-semibold px-8 py-3 rounded-2xl shadow-lg transition"
             >
               View Projects <FaArrowRight />
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="/Mahmudul-Hasan-cv.pdf"
-              className="inline-flex items-center gap-2 border-2 border-blue-700 text-blue-700 px-6 py-3 rounded-xl hover:bg-blue-700 hover:text-white transition font-medium"
               download
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-3 border-2 border-cyan-500 hover:border-cyan-600 text-cyan-500 hover:text-cyan-600 font-semibold px-8 py-3 rounded-2xl transition"
             >
               Download CV
-            </a>
+            </motion.a>
           </div>
-          <div className="flex justify-center md:justify-start gap-4 my-4 ">
-            <a
+
+          <div className="flex justify-center md:justify-start gap-6 mt-8">
+            <motion.a
               href="https://github.com/mithun41"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#333] hover:text-black transition"
-              title="GitHub"
+              whileHover={{ scale: 1.2 }}
+              className="text-gray-300 hover:text-white transition"
+              aria-label="GitHub"
             >
               <FaGithub size={40} />
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="https://www.linkedin.com/in/mahmudul41/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#0077B5] hover:text-blue-800 transition"
-              title="LinkedIn"
+              whileHover={{ scale: 1.2 }}
+              className="text-cyan-400 hover:text-cyan-500 transition"
+              aria-label="LinkedIn"
             >
               <FaLinkedin size={40} />
-            </a>
+            </motion.a>
           </div>
         </motion.div>
 
@@ -73,13 +110,13 @@ const Banner = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
           className="flex-1 flex justify-center"
         >
           <img
             src={myImage}
             alt="Mahmudul Hasan"
-            className="w-72 h-72 md:w-96 md:h-96 object-cover rounded-full shadow-lg border-4 border-white"
+            className="w-72 h-72 md:w-96 md:h-96 object-cover rounded-full shadow-2xl border-4 border-cyan-400 hover:border-cyan-500 transition-all cursor-pointer"
           />
         </motion.div>
       </div>
