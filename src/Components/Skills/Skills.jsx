@@ -46,7 +46,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen w-full py-24 overflow-hidden"
+      className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900  w-full py-24 overflow-hidden"
     >
       <h2 className="text-5xl font-bold text-center mb-16 text-cyan-400 tracking-wide">
         My Skills
@@ -78,7 +78,6 @@ const Skills = () => {
             repeatType: "loop",
             duration: scrollDuration,
             ease: "linear",
-            delay: scrollDuration / 2,
           }}
         >
           {badges}

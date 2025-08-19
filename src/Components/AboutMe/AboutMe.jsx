@@ -1,58 +1,67 @@
 import { motion } from "framer-motion";
+import myPhoto from "../../assets/Mithun.png";
 
 const AboutMe = () => {
   return (
     <section
       id="about"
-      className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen px-6 md:px-20 py-24 flex flex-col justify-center"
+      className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-24 px-6 md:px-20"
     >
-      <h2 className="text-5xl font-extrabold text-center mb-16 text-cyan-400 tracking-wide">
+      {/* Section Heading */}
+      <h2 className="text-5xl font-extrabold text-cyan-400 mb-16 text-center tracking-wide">
         About Me
       </h2>
 
-      <motion.div
-        className="max-w-4xl mx-auto text-gray-300 text-lg leading-relaxed space-y-10"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        <p className="bg-gray-800 bg-opacity-60 p-8 rounded-3xl shadow-xl border border-cyan-700">
-          Hello! I’m{" "}
-          <span className="font-semibold text-cyan-400">
-            Mahmudul Hasan Mithun
-          </span>
-          , a passionate front-end developer from Bangladesh. My programming
-          journey started with a deep curiosity about how websites work, which
-          soon turned into a love for writing clean, interactive, and functional
-          code. I completed the full web development course from Programming
-          Hero, where I built hands-on projects using HTML, CSS, JavaScript,
-          React, Firebase, and MongoDB.
-        </p>
+      {/* Content Container */}
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+        {/* Left - Image */}
+        <motion.div
+          className="w-full md:w-1/3 flex justify-center"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-cyan-500 w-full">
+            <img
+              src={myPhoto}
+              alt="Mahmudul Hasan Mithun"
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
+        </motion.div>
 
-        <p className="bg-gray-800 bg-opacity-60 p-8 rounded-3xl shadow-xl border border-cyan-700">
-          I enjoy working on real-world problems, designing modern UIs, and
-          building smooth user experiences. Whether it’s crafting a
-          pixel-perfect landing page or building a full-stack app, I love
-          bringing ideas to life through code. My favorite tools include React,
-          Tailwind CSS, and Firebase — and I'm always open to learning new
-          technologies that help improve performance and user experience.
-        </p>
+        {/* Right - Text */}
+        <motion.div
+          className="w-full md:w-2/3 space-y-6 text-gray-300 text-lg leading-relaxed"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <p className="bg-gray-800 bg-opacity-60 p-6 rounded-3xl shadow-xl border border-cyan-700">
+            Hi! I’m{" "}
+            <span className="font-semibold text-cyan-400">
+              Mahmudul Hasan Mithun
+            </span>
+            , a front-end developer from Bangladesh. I build interactive,
+            responsive web applications using React, Tailwind CSS, Firebase, and
+            MongoDB.
+          </p>
 
-        <p className="bg-gray-800 bg-opacity-60 p-8 rounded-3xl shadow-xl border border-cyan-700">
-          Outside of programming, I enjoy spending time in nature, watching tech
-          documentaries, and exploring street photography. I also like
-          experimenting with design ideas in Figma, even if it's just for fun. I
-          believe staying curious both in tech and in life helps me grow as a
-          developer and as a person.
-        </p>
+          <p className="bg-gray-800 bg-opacity-60 p-6 rounded-3xl shadow-xl border border-cyan-700">
+            I enjoy designing modern UIs, solving real-world problems, and
+            creating smooth user experiences. I’m always eager to learn new
+            technologies that improve performance and usability.
+          </p>
 
-        <p className="bg-gray-800 bg-opacity-60 p-8 rounded-3xl shadow-xl border border-cyan-700">
-          I’m a strong believer in continuous learning, collaboration, and
-          building meaningful things. If you’re looking for someone who codes
-          with passion and is always ready to improve, then I’d love to connect!
-        </p>
-      </motion.div>
+          <p className="bg-gray-800 bg-opacity-60 p-6 rounded-3xl shadow-xl border border-cyan-700">
+            Outside programming, I enjoy exploring nature, street photography,
+            and experimenting with designs in Figma. Continuous learning and
+            collaboration are at the heart of everything I do.
+          </p>
+        </motion.div>
+      </div>
     </section>
   );
 };

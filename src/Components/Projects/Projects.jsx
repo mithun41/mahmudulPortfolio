@@ -33,12 +33,11 @@ const ProjectCard = ({
   delay,
 }) => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.3 });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     if (inView) controls.start({ opacity: 1, y: 0 });
-    else controls.start({ opacity: 0, y: 50 });
   }, [controls, inView]);
 
   return (
@@ -52,6 +51,7 @@ const ProjectCard = ({
           reverse ? "md:flex-row-reverse" : "md:flex-row"
         } items-center gap-10`}
       >
+        {/* Project Image */}
         <div
           onClick={() => setModalOpen(true)}
           title="Click to view full image"
@@ -65,24 +65,26 @@ const ProjectCard = ({
           />
         </div>
 
+        {/* Project Info */}
         <div className="w-full md:w-1/2 text-center md:text-left">
           <h3 className="text-3xl font-semibold text-cyan-400 mb-4 hover:text-cyan-500 cursor-default">
             {title}
           </h3>
           <p className="text-gray-400 mb-6 leading-relaxed">{desc}</p>
 
+          {/* Tech Stack */}
           <div className="flex gap-3 flex-wrap justify-center md:justify-start mb-6">
             {tech.map(({ icon: Icon, name, color }) => (
-              <motion.div
+              <div
                 key={name}
-                whileHover={{ scale: 1.1 }}
                 className={`${color} px-4 py-1 rounded-full flex items-center gap-2 text-sm font-semibold shadow-md cursor-default`}
               >
                 <Icon className="text-lg" /> {name}
-              </motion.div>
+              </div>
             ))}
           </div>
 
+          {/* Links */}
           <div className="flex gap-5 justify-center md:justify-start flex-wrap">
             <motion.a
               href={live}
@@ -108,6 +110,7 @@ const ProjectCard = ({
         </div>
       </motion.div>
 
+      {/* Modal */}
       {modalOpen && (
         <div
           onClick={() => setModalOpen(false)}
@@ -138,7 +141,7 @@ const Projects = () => {
       img: projects1,
       alt: "Tech Trove",
       title: "Tech Trove",
-      desc: "Tech Trove is a full-stack web application built with React, Node.js, MongoDB, and Firebase that functions as a tech product marketplace. It allows users to browse, review, and vote on tech products, featuring user authentication, real-time data updates, and an intuitive UI styled with Tailwind CSS. The project demonstrates skills in modern web development, API integration, and responsive design.",
+      desc: "Tech Trove is a full-stack web application built with React, Node.js, MongoDB, and Firebase that functions as a tech product marketplace. It allows users to browse, review, and vote on tech products, featuring user authentication, real-time data updates, and an intuitive UI styled with Tailwind CSS.",
       tech: [
         {
           icon: SiJavascript,
@@ -151,7 +154,7 @@ const Projects = () => {
         { icon: SiMongodb, name: "MongoDB", color: techColors.mongodb },
       ],
       live: "https://tech-trove.surge.sh/",
-      repo: "#",
+      repo: "https://github.com/mithun41/tech-trove-client",
       reverse: false,
     },
     {

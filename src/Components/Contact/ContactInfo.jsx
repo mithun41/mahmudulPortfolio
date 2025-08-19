@@ -46,19 +46,19 @@ const contacts = [
     id: 4,
     icon: <FaMapMarkerAlt size={24} />,
     title: "Location",
-    description: " Dhaka, Bangladesh",
+    description: "Dhaka, Bangladesh",
   },
   {
     id: 5,
     icon: <FaClock size={24} />,
     title: "Availability",
-    description: "Open for freelance projects and collaborations",
+    description: "Open for full-time job opportunities",
   },
   {
     id: 6,
     icon: <FaCalendarAlt size={24} />,
     title: "Best Time to Reach",
-    description: "10:00 AM – 6:00 PM (GMT+6)",
+    description: "10:00 AM – 10:00 PM (GMT+6)",
   },
 ];
 
@@ -136,7 +136,7 @@ const ContactMethods = () => {
                 </div>
                 <h3 className="font-semibold text-xl text-gray-300">{title}</h3>
               </div>
-              <p className="text-gray-300 pl-14">{description}</p>
+              <p className="text-gray-300 pl-14 break-words">{description}</p>
               {buttonText && buttonLink && (
                 <a
                   href={buttonLink}
