@@ -72,13 +72,13 @@ const Banner = () => {
               View Projects <FaArrowRight />
             </motion.a>
             <motion.a
-              href="/Mahmudul-Hasan-cv.pdf"
-              download
+              href="https://drive.google.com/file/d/1Wmp-xC9PQ1PJtqTTXxmGK3s04mgOH0Y-/view?usp=sharing"
+              target="_blank"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-3 border-2 border-cyan-500 hover:border-cyan-600 text-cyan-500 hover:text-cyan-600 font-semibold px-8 py-3 rounded-2xl transition"
             >
-              Download CV
+              Resume
             </motion.a>
           </div>
 

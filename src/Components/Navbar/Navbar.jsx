@@ -64,16 +64,18 @@ const Navbar = () => {
           MHMithun
         </a>
       </div>
+
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-cyan-400">{menu}</ul>
       </div>
+
       <div className="navbar-end">
         <a
-          href="/Mahmudul-Hasan-cv.pdf"
+          href="https://drive.google.com/file/d/1Wmp-xC9PQ1PJtqTTXxmGK3s04mgOH0Y-/view?usp=sharing"
+          target="_blank"
           className="inline-flex items-center gap-2 border-2 border-cyan-400 text-cyan-400 px-6 py-3 rounded-xl hover:bg-cyan-400 hover:text-gray-900 transition font-medium"
-          download
         >
-          Download CV
+          Resume
         </a>
       </div>
     </div>
